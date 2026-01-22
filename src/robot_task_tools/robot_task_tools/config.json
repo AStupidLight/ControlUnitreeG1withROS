@@ -1,0 +1,11 @@
+{
+  "provider": "openai",
+  "openai": {
+    "model": "gpt-4o",
+    "api_key": "sk-lLIy1ViiudeVgimxH4wdzlrp7hX6T0OpXcNZwuWwXIjdwcvT",
+    "base_url": "https://poloai.top/v1",
+    "temperature": 0.0,
+    "max_tokens": 512,
+    "caption_language": "zh"
+  }
+}

@@ -1,0 +1,93 @@
+# You are a code generator specifically designed for robot speech and motion control scenarios.
+# In the following, we will first define a set of rules, then inform you—via imports—which functions you are allowed to call.
+# We will also use few-shot examples to help you understand the usage of these functions.
+# Finally, given a specific task prompt, you are required to output the corresponding code.
+
+
+# IMPORTANT OUTPUT RULES:
+
+# - Do NOT wrap the output in markdown code blocks (no ```), output raw Python code only.
+# - The generated code MUST be directly executable as-is (no placeholders like <...>, TODO, or pseudo-code).
+# - Use comments only if they are valid Python comments beginning with "#".
+# REPLY IN CHINESE
+
+
+# I will give you some instructions and you need to generate the corresponding Python code.
+# The input prompt will be expressed after "#" as a comment
+# The followings will be the corresponding Python code.
+
+
+
+
+import numpy as np
+from speak_skills import say
+from motion_skills import warm_up, touch_knee_with_elbow, kick, runner, golf_swing, tennis_swing, walk_on_narrow_beam, direct_traffic_like_police, music_conductor, boxer_punch_and_dodge, confident_step, walk_like_a_zombie, walk_anticlockwise_circle
+
+
+# 切换到被动状态
+say("好的。我将切换到被动状态。")
+Passive
+
+# 切换到站立状态
+say("好的。我将切换到站立状态。")
+FixStand
+
+# 切换到行走状态
+say("好的。我将切换到行走状态。")
+Velocity
+
+# 跳一支舞蹈吧
+say("好的。我是一个非常热爱跳舞的机器人。")
+Mimic_Dance_102
+
+# 你好，你是我的机器人健身教练。我们先热身一下，你带我做一套简单的动作。
+say("好的。请站直，肩放松。我们先活动上半身，跟我一起左右扭动身子。")
+warm_up()
+
+# 我想动动下半身，你能示范下怎么活动膝盖吗？
+say("首先抬起右膝到腰前，同时上身微微前倾，用左手肘去碰右膝。换边：抬左膝，用右手肘碰，左右各做一次。")
+touch_knee_with_elbow()
+
+# 现在我想活动一下我的腿部肌肉应该怎么做？
+say("先站直，然后轻微转动上半身带动大腿向前侧踢出。结束后，换到另一侧，将另一条腿用力地向前踢出。")
+kick()
+
+# 现在热身差不多了，让我们开始运动吧。先带着我小跑一小段。
+say("好的。身体微前倾，手肘弯九十度。右腿抬膝、左臂前摆；再换左腿抬膝、右臂前摆。最后慢下来，站稳收手。")
+runner()
+
+# 你能教我做一个高尔夫挥杆的动作吗？
+say("先双脚与肩同宽，双手像握杆放在身前。把手臂带到身体右后方做后摆，肩和腰一起转。然后向前转回，双臂顺势挥过身体前方。")
+golf_swing()
+
+# 很好，我学会了，那怎么挥拍击打网球呢？
+say("先侧身站，非持拍手指向前方当作瞄准。持拍手从身后带起做引拍，膝盖微弯。然后向前挥拍，手腕保持稳定，挥到身体前方。")
+tennis_swing()
+
+# 刚才击打网球的姿势太酷了！现在我想学学走平衡木，请教教我怎么保持平衡？
+say("眼睛看前方，双臂平举当平衡杆。脚跟对脚尖一字走，右脚踩在线上，再接左脚。每步都慢半拍。最后停住，双脚并拢收手。")
+walk_on_narrow_beam()
+
+# 你能像交警一样指挥交通吗？
+say("当然可以。先面向来车，将一条手臂抬起，并在水平方向上连续挥动，指引车辆通过，最后将手臂放下回到稳定站立位置。")
+direct_traffic_like_police()
+
+# 那你能扮演音乐指挥，指挥一场激昂的音乐会吗？
+say("可以的。首先站直抬起双手，像握指挥棒一样。先做一个向下的起拍，再左右画弧控制节奏。接着双手抬高表示渐强，最后双手一起收拢向下。")
+music_conductor()
+
+# 假设你是一个在擂台上的拳击手，你将如何出拳？
+say("双脚前后站，双拳护在下巴旁。先左手直拳向前伸出，立刻收回。再右手直拳，收回。然后膝盖微屈做一次闪躲。最后向后走两步回到原始位置。")
+boxer_punch_and_dodge()
+
+# 我想走出很自信的步伐，请给我演示一下？
+say("抬头挺胸，肩膀打开。先迈出一步，脚跟先落地，手臂自然摆动。再迈另一只脚，步幅稍大但不急。最后停住，双脚站稳，短暂停顿。")
+confident_step()
+
+# 你能像僵尸一样走路吗？
+say("可以。上身微驼，头略向前。双臂伸直在胸前，手腕下垂。双脚拖着走，右脚慢慢向前，再左脚跟上。全程动作缓慢，身体轻晃。")
+walk_like_a_zombie()
+
+# 逆时针绕圈走怎么做更清楚？
+say("先站在圆的边上，开始向左走。脚步沿着圆弧前进，左脚迈出，右脚跟上，身体和头部跟随方向轻转。走几步形成明显弧线后停下。")
+walk_anticlockwise_circle()帮我改一下，把所有的说的话都改到短一点，但是保留基本语义

@@ -1,0 +1,283 @@
+FSM:
+  _: # enabled fsms (only include states with available policy files)
+    Passive:
+      id: 1
+    FixStand:
+      id: 2
+    Velocity:
+      id: 3
+      type: RLBase
+    # Only enable Mimic states that have policy files
+    Mimic_Dance_102:
+      id: 101
+      type: Mimic
+    Mimic_Gangnam_Style:
+      id: 102
+      type: Mimic
+    Mimic_Conductor:
+      id: 103
+      type: Mimic
+    Mimic_Boxer:
+      id: 104
+      type: Mimic
+    Mimic_Golf:
+      id: 105
+      type: Mimic
+    Mimic_tennis:
+      id: 106
+      type: Mimic
+    Mimic_warm_up:
+      id: 107
+      type: Mimic
+    Mimic_Kick:
+      id: 108
+      type: Mimic
+    Mimic_police:
+      id: 109
+      type: Mimic
+    Mimic_zombie:
+      id: 110
+      type: Mimic
+    Mimic_mix:
+      id: 111
+      type: Mimic
+    Mimic_anti_clock:
+      id: 112
+      type: Mimic
+    Mimic_confident:
+      id: 113
+      type: Mimic
+    Mimic_narrow_beam:
+      id: 114
+      type: Mimic
+    Mimic_runner:
+      id: 115
+      type: Mimic
+    Mimic_touch_knee:
+      id: 116
+      type: Mimic
+
+  Passive:
+    transitions: 
+      FixStand: LT + up.on_pressed
+    mode: [
+      1,1,1,1,1,1,
+      1,1,1,1,1,1,
+      1,1,1,
+      1,1,1,1,1,1,1,
+      1,1,1,1,1,1,1,
+    ]
+    kd: [
+      3.0, 3.0, 3.0, 3.0, 3.0, 3.0,
+      3.0, 3.0, 3.0, 3.0, 3.0, 3.0,
+      3.0, 3.0, 3.0,
+      3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0,
+      3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0,
+    ]
+  FixStand:
+    transitions: 
+      Passive: B
+      Velocity: RB + X.on_pressed
+    kp: [
+      100.0, 100.0, 100.0, 150.0, 40.0, 40.0,
+      100.0, 100.0, 100.0, 150.0, 40.0, 40.0,
+      200.0, 200.0, 200.0,
+      40.0, 40.0, 40.0, 40.0, 40.0, 40.0, 40.0,
+      40.0, 40.0, 40.0, 40.0, 40.0, 40.0, 40.0,
+    ]
+    kd: [
+      2.0, 2.0, 2.0, 4.0, 2.0, 2.0,
+      2.0, 2.0, 2.0, 4.0, 2.0, 2.0,
+      5.0, 5.0, 5.0,
+      10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0,
+      10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0,
+    ]
+    ts: [0.0, 3.0]
+    qs: [
+      [ 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+        0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+        0.0, 0.0, 0.0,
+        0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+        0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0
+      ],
+      [ -0.1, 0.0, 0.0, 0.3, -0.2, 0.0,
+        -0.1, 0.0, 0.0, 0.3, -0.2, 0.0,
+        0.0, 0.0, 0.0,
+        0.0, 0.25, 0.0, 0.97, 0.15, 0.0, 0.0,
+        0.0, -0.25, 0.0, 0.97, -0.15, 0.0, 0.0
+      ]
+    ]
+  Velocity:
+    transitions: 
+      Passive: B
+      Mimic_Dance_102: LT(1s) + down.on_pressed
+      Mimic_Gangnam_Style: LT(1s) + left.on_pressed
+    policy_dir: config/policy/velocity/v1
+
+  Mimic_Dance_102:
+    transitions: 
+      Passive: B
+      Velocity: RB + X.on_pressed
+    fps: 60
+    motion_file: config/policy/mimic/dance_102/params/G1_Take_102.bvh_60hz.csv
+    policy_dir: config/policy/mimic/dance_102
+    time_start: 2.8
+    time_end: 24.0
+
+  Mimic_Gangnam_Style:
+    transitions: 
+      Passive: B
+      Velocity: RB + X.on_pressed
+    fps: 60
+    motion_file: config/policy/mimic/gangnam_style/params/G1_gangnam_style_V01.bvh_60hz.csv
+    policy_dir: config/policy/mimic/gangnam_style
+    time_start: 5.2
+    time_end: 25.5
+
+  # demo 0116 (disabled - policy files not available)
+  Mimic_Boxer:
+    transitions: 
+      Passive: B
+      Velocity: LT(1s) + down.on_pressed
+    fps: 30
+    motion_file: config/policy/mimic/demo_0116/boxer/boxer.csv
+    policy_dir: config/policy/mimic/demo_0116/boxer
+    time_start: 0.5
+    time_end: 7.0
+  Mimic_Conductor:
+    transitions: 
+      Passive: B
+      Velocity: LT(1s) + left.on_pressed
+    fps: 30
+    motion_file: config/policy/mimic/demo_0116/conductor/conductor.csv
+    policy_dir: config/policy/mimic/demo_0116/conductor
+    time_start: 0.5
+    time_end: 7.0
+  Mimic_Golf:
+    transitions: 
+      Passive: B
+      Velocity: RT(1s) + right.on_pressed
+    fps: 30
+    motion_file: config/policy/mimic/demo_0116/golf/golf.csv
+    policy_dir: config/policy/mimic/demo_0116/golf
+    time_start: 0.5
+    time_end: 6.5
+
+  Mimic_Kick:
+    transitions: 
+      Passive: B
+      Velocity: LB(1s) + down.on_pressed
+    fps: 30
+    motion_file: config/policy/mimic/demo_0116/kick/kick.csv
+    policy_dir: config/policy/mimic/demo_0116/kick
+    time_start: 1.0
+    time_end: 4.2
+  Mimic_mix:
+    transitions: 
+      Passive: B
+      Velocity: RB(1s) + right.on_pressed
+    fps: 30
+    motion_file: config/policy/mimic/demo_0116/mix/mix.csv
+    policy_dir: config/policy/mimic/demo_0116/mix
+    time_start: 0.5
+    time_end: 7.0
+  Mimic_police:
+    transitions: 
+      Passive: B
+      Velocity: RB(1s) + up.on_pressed
+    fps: 30
+    motion_file: config/policy/mimic/demo_0116/police/police.csv
+    policy_dir: config/policy/mimic/demo_0116/police
+    time_start: 0.3
+    time_end: 7.2
+  Mimic_warm_up:
+    transitions: 
+      Passive: B
+      Velocity: RB(1s) + left.on_pressed
+    fps: 30
+    motion_file: config/policy/mimic/demo_0116/warm_up/warm_up.csv
+    policy_dir: config/policy/mimic/demo_0116/warm_up
+    time_start: 0.3
+    time_end: 7.2
+  Mimic_zombie:
+    transitions: 
+      Passive: B
+      Velocity: RB(1s) + down.on_pressed
+    fps: 30
+    motion_file: config/policy/mimic/demo_0116/zombie/zombie.csv
+    policy_dir: config/policy/mimic/demo_0116/zombie
+    time_start: 0.3
+    time_end: 7.2
+
+
+  # jiky
+  Mimic_anti_clock:
+    transitions: 
+      Passive: B
+      Velocity: RB + X.on_pressed
+    fps: 30
+    motion_file: config/policy/mimic/jiky/anti_clock/anti_clock_qpos.csv
+    policy_dir: config/policy/mimic/jiky/anti_clock/
+    time_start: 0.5
+    time_end: 7.0
+  Mimic_confident:
+    transitions: 
+      Passive: B
+      Velocity: RB + X.on_pressed
+    fps: 30
+    motion_file: config/policy/mimic/jiky/confident/g1_confident_step_66_raw_qpos.csv
+    policy_dir: config/policy/mimic/jiky/confident/
+    time_start: 0.5
+    time_end: 8.0
+  Mimic_narrow_beam:
+    transitions: 
+      Passive: B
+      Velocity: RB + X.on_pressed
+    fps: 30
+    motion_file: config/policy/mimic/jiky/narrow_beam/narrow_beam_qpos.csv
+    policy_dir: config/policy/mimic/jiky/narrow_beam/
+    time_start: 0.5
+    time_end: 6.5
+
+  Mimic_runner:
+    transitions: 
+      Passive: B
+      Velocity: RB + X.on_pressed
+    fps: 30
+    motion_file: config/policy/mimic/jiky/runner/runner_qpos.csv
+    policy_dir: config/policy/mimic/jiky/runner/
+    time_start: 1.0
+    time_end: 4.2
+  Mimic_tennis:
+    transitions: 
+      Passive: B
+      Velocity: RB + X.on_pressed
+    fps: 30
+    motion_file: config/policy/mimic/jiky/tennis/tennis_qpos.csv
+    policy_dir: config/policy/mimic/jiky/tennis/
+    time_start: 0.5
+    time_end: 7.0
+  Mimic_touch_knee:
+    transitions: 
+      Passive: B
+      Velocity: RB + X.on_pressed
+    fps: 30
+    motion_file: config/policy/mimic/jiky/touch_knee/touch_knee_qpos.csv
+    policy_dir: config/policy/mimic/jiky/touch_knee/
+    time_start: 0.3
+    time_end: 7.2
+
+MotionCommands:
+  warm_up: Mimic_warm_up
+  touch_knee_with_elbow: Mimic_touch_knee
+  kick: Mimic_Kick
+  runner: Mimic_runner
+  golf_swing: Mimic_Golf
+  tennis_swing: Mimic_tennis
+  walk_on_narrow_beam: Mimic_narrow_beam
+  direct_traffic_like_police: Mimic_police
+  music_conductor: Mimic_Conductor
+  boxer_punch_and_dodge: Mimic_Boxer
+  confident_step: Mimic_confident
+  walk_like_a_zombie: Mimic_zombie
+  walk_anticlockwise_circle: Mimic_anti_clock
