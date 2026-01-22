@@ -4,6 +4,7 @@ import os
 import re
 import sys
 import requests
+import time
 from typing import List, Optional
 
 import rclpy
@@ -185,6 +186,9 @@ class PromptRouterNode(Node):
         say_texts = extract_say_texts_from_code(code)
         for t in say_texts:
             self.publish_text(self.say_pub, t)
+
+        # 等待1秒后发送动作消息
+        time.sleep(1.0)
 
         # 2) publish motion "payload"
         # 最稳妥：直接把 code 发给 motion 端去解析/执行
