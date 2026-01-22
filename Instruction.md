@@ -20,11 +20,18 @@ rllab_deploy_ros：部署在机器人上负责切换状态机与实际的动作�
 
 
 
-# 编译整个项目
+# 构建整个项目
 
+## 机器人侧
 对于机器人的两个node，直接使用colcon来编译
 
 cd ~/cxy/ControlUnitreeG1withROS && source /opt/ros/foxy/setup.bash && colcon build --packages-select g1_29dof_controller g1_bridge
+
+## 端侧
+colcon build --packages-select robot_task_tools
+
+
+pip install -e .
 
 
 
@@ -32,9 +39,20 @@ cd ~/cxy/ControlUnitreeG1withROS && source /opt/ros/foxy/setup.bash && colcon bu
 
 conda activate cap310
 
+source install/setup.bash
+
+
+使用ROS2启动
+ros2 run robot_task_tools prompt_router
+
+或者直接使用Python
+python3 src/robot_task_tools/robot_task_tools/prompt_router_node.py
+
+
 source /opt/ros/humble/setup.bash
 
 export ROS_DOMAIN_ID=1
+
 
 
 
