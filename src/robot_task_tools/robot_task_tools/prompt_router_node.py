@@ -188,7 +188,7 @@ class PromptRouterNode(Node):
             self.publish_text(self.say_pub, t)
 
         # 等待1秒后发送动作消息
-        time.sleep(1.0)
+        time.sleep(5.0)
 
         # 2) publish motion "payload"
         # 最稳妥：直接把 code 发给 motion 端去解析/执行
